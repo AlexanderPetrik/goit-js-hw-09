@@ -1,11 +1,11 @@
 const refs = {
-  btnStart: document.querySelector('button[adta-action = "start"]'),
-  btnStop: document.querySelector('button[adta-action = "stop"]'),
+  btnStart: document.querySelector('button[data-start]'),
+  btnStop: document.querySelector('button[data-stop]'),
   body: document.body,
 }
 
 const delay = 1000;
-const interval = null;
+let timerId = null;
 
 // генерация цвета
 function getRandomHexColor() {
@@ -13,14 +13,20 @@ function getRandomHexColor() {
 }
 
 // добавляет рандомный цвет на body
-function getBodyColor() {
-    return body.style.backgroundColor = getRandomHexColor();
+function setBodyColor() {
+  refs.body.style.backgroundColor = getRandomHexColor();
 };
 
 
 // обработка событий
-startBtn.addEventListener('click', startBtnHandler);
-stopBtn.addEventListener('click', stopBtnHandler);
+refs.btnStart.addEventListener('click', startBtnHandler);
+refs.btnStop.addEventListener('click', stopBtnHandler);
 
-function startBtnHandler() { };
-function stopBtnHandler() { };
+function startBtnHandler() {
+  timerId = setInterval(setBodyColor, delay);
+  refs.btnStart.disabled = true;
+};
+function stopBtnHandler() {
+  clearInterval(timerId);
+  refs.btnStart.disabled = false;
+};

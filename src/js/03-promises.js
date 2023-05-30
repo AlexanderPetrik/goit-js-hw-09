@@ -1,17 +1,8 @@
-import Notiflix from 'notiflix';
+// import Notiflix from 'notiflix';
 
 const refs = {
   form: document.querySelector('.form'),
 };
-
-// function createPromise(position, delay) {
-//   const shouldResolve = Math.random() > 0.3;
-//   if (shouldResolve) {
-//     // Fulfill
-//   } else {
-//     // Reject
-//   }
-// }
 
 function createPromise(position, delay) {
   return new Promise((resolve, reject) => {
@@ -46,11 +37,13 @@ function onCreatePromises(e) {
 }
 
 function onError({ position, delay }) {
-  Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`);
+  // Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`);
+  console.log(`❌ Rejected promise ${position} in ${delay}ms`);
 }
 
 function onSuccess({ position, delay }) {
-  Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
+  // Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
+  console.log(`✅ Fulfilled promise ${position} in ${delay}ms`);
 }
 
 refs.form.addEventListener('submit', onCreatePromises);

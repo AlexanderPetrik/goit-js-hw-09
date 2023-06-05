@@ -15,6 +15,8 @@ refs.startBtn.disabled = true;
 refs.startBtn.addEventListener('click', startTimer);
 
 function startTimer() {
+  refs.startBtn.disabled = true;
+  refs.dateInput.disabled = true;
   const selectedDate = new Date(refs.dateInput.value).getTime();
   const timerID = setInterval(() => {
     const currentDate = Date.now();

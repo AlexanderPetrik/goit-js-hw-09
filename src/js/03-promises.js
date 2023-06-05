@@ -29,9 +29,9 @@ function onCreatePromises(e) {
   let { amount, step, delay } = dataParams;
 
   for (let i = 1; i <= amount; i += 1) {
-    delay += step;
-    createPromise(i, delay).then(onSuccess).catch(onError);
 
+    createPromise(i, delay).then(onSuccess).catch(onError);
+    delay += step;
     refs.form.reset();
   }
 }

@@ -4,6 +4,8 @@ const refs = {
   body: document.body,
 }
 
+refs.btnStop.disabled = true;
+
 const delay = 1000;
 let timerId = null;
 
@@ -25,8 +27,10 @@ refs.btnStop.addEventListener('click', stopBtnHandler);
 function startBtnHandler() {
   timerId = setInterval(setBodyColor, delay);
   refs.btnStart.disabled = true;
+  refs.btnStop.disabled = false;
 };
 function stopBtnHandler() {
   clearInterval(timerId);
   refs.btnStart.disabled = false;
+  refs.btnStop.disabled = true;
 };
